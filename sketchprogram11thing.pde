@@ -1,94 +1,73 @@
-int x, y;
-int red = 255;
-int green = 255;
-int blue = 255;
-float sliderX;
-float thickness;
+color white = #FFFFFF;
+color black = #000000;
+color grey = #555555;
+color penColor = black;
+float sliderY;
+float thickness = 1;
+int tool = 1;
+
+PImage rankings;
 
 void setup() {
   size(800, 600);
-  sliderX = 50;
-  thickness = 1;
+  background(grey);
+  sliderY = 350;
+  rankings = loadImage("zrank3ngs");
+  imageMode(CENTER);
 }
 
 void draw() {
+   thickness = map(sliderY,300,400,50,1);
   
-  stroke(0);
-  strokeWeight(thickness);
+
   if (mousePressed) {
-      line(pmouseX, pmouseY, mouseX, mouseY);
-  }
-  
-  fill(255);
-  stroke(0);
-  strokeWeight(1);
-  rect(0,0,width,100);
-  line (50,50,150,50);
-  ellipse(sliderX,50,20,20);
-  
-  if (mousePressed) {
-      if (dist(sliderX, 50, mouseX, mouseY) < 100) {
-         sliderX = mouseX;
-         
-         if (sliderX < 50) {
-           sliderX = 50;
-         }
-         
-          if (sliderX > 150) {
-           sliderX = 150;
-         }
+      if (dist(50, sliderY, mouseX, mouseY) < 25) {
+        sliderY = mouseY;
+        if (sliderY > 400) sliderY = 400;
+        if (sliderY < 300) sliderY = 300;
+        
       }
   }
   
-  thickness = map(sliderX,50,150,1,20);
+  if (mousePressed && mouseX > 100) {
+    if (tool == 0) {
+     stroke(penColor);
+     strokeWeight(thickness);
+     line(pmouseX, pmouseY, mouseX, mouseY);
+    }   
+    if (tool == 1) {
+     image(rankings, mouseX, mouseY, thickness*5,thickness*5);
+    }
+  }
+  
+  strokeWeight(1);
+  stroke(black);
+  fill(150);
+  rect(0,0,100,600);
+  
+  fill(white);
+  ellipse(50,50,25,25);
+  
+  fill(black);
+  ellipse(50,80,25,25);
+  
+  line(50,300,50,400);
+  ellipse(50,sliderY,25,25);
+  
+  image(rankings, 50, 450, 50, 50);
+  
+}  
 
-//  //x = y = 300;
-//  //noFill();
-//  //stroke(0);
-//  //strokeWeight(4);
-//  //textSize(30);
-
-//  background(red, green, blue);
-  
-//  if (dist (400, 150, mouseX, mouseY) < 50) {
-//    fill(255, 0, 0);
-//  } else {
-//    fill(100, 0, 0);
-//  }
-//  ellipse(400, 150, 100, 100);
-
-//  if (dist (400, 300, mouseX, mouseY) < 50) {
-//    fill(0, 255, 0);
-//  } else {
-//    fill(0, 100, 0);
-//  }
-//  ellipse(400, 300, 100, 100);
-  
-//   if (dist (400, 450, mouseX, mouseY) < 50) {
-//    fill(0, 0, 255);
-//  } else {
-//    fill(0, 0, 100);
-//  }
-//  ellipse(400, 450, 100, 100);
-//}
-//void mouseReleased() {
-  
-//  if (dist(400, 150, mouseX, mouseY) < 50) {
-//    red = 255;
-//    green = 0;
-//    blue = 0;
-//  }
-  
-//   if (dist(400, 300, mouseX, mouseY) < 50) {
-//    red = 0;
-//    green = 255;
-//    blue = 0;
-//  }
-  
-//   if (dist(400, 450, mouseX, mouseY) < 50) {
-//    red = 0;
-//    green = 0;
-//    blue = 255;
-//  }
-  
+void mouseReleased() {
+  if (dist(50,50, mouseX, mouseY) < 10) {
+    penColor = white;
+    tool = 0;
+  }
+  if (dist(50,80, mouseX, mouseY) < 10) {
+    penColor = black;
+    tool = 0;
+  }
+  if (dist(50,450,mouseX,mouseY) < 35) {
+    tool = 1;
+  }
 }
