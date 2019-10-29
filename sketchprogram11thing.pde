@@ -6,13 +6,13 @@ float sliderY;
 float thickness = 1;
 int tool = 1;
 
-PImage rankings;
+PImage batman;
 
 void setup() {
   size(800, 600);
   background(grey);
   sliderY = 350;
-  rankings = loadImage("zrank3ngs");
+  batman = loadImage("Batman-PNG-HD.png");
   imageMode(CENTER);
 }
 
@@ -36,7 +36,7 @@ void draw() {
      line(pmouseX, pmouseY, mouseX, mouseY);
     }   
     if (tool == 1) {
-     image(rankings, mouseX, mouseY, thickness*5,thickness*5);
+     image(batman, mouseX, mouseY, thickness*10,thickness*10);
     }
   }
   
@@ -54,7 +54,7 @@ void draw() {
   line(50,300,50,400);
   ellipse(50,sliderY,25,25);
   
-  image(rankings, 50, 450, 50, 50);
+  image(batman, 50, 450, 50, 50);
   
 }  
 
@@ -70,4 +70,10 @@ void mouseReleased() {
   if (dist(50,450,mouseX,mouseY) < 35) {
     tool = 1;
   }
+  
+  if (mouseX > 10 && mouseX < 60 && mouseY > 520 && mouseY < 545) {
+  selectInput("select", "openImage");
+   
+   if (mouseX > 10 && mouseX < 60 && mouseY > 520 && mouseY < 545) {
+  selectInput("select", "openImage");
 }
