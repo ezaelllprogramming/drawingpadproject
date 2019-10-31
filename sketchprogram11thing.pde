@@ -70,10 +70,32 @@ void mouseReleased() {
   if (dist(50,450,mouseX,mouseY) < 35) {
     tool = 1;
   }
-  
+  // if (dist(130, 70, mouseX,mouseY) <= 50) {
+  //  mode = batman;
+  //}
   if (mouseX > 10 && mouseX < 60 && mouseY > 520 && mouseY < 545) {
-  selectInput("select", "openImage");
-   
-   if (mouseX > 10 && mouseX < 60 && mouseY > 520 && mouseY < 545) {
-  selectInput("select", "openImage");
+  selectInput("PICK DA FILE, BRO <3", "openImage");
+  }
+  if (mouseX > 10 && mouseX < 60 && mouseY > 550 && mouseY < 575) {
+  selectOutput("Save as...", "saveImage");
+  }
 }
+
+void saveImage(File f) {
+  if (f != null) {
+    PImage canvas = get(   71, 1, width-71, height-1);
+    canvas.save(f.getAbsolutePath());
+  }
+}
+
+void openImage(File f) {
+  if (f != null) {
+    int n = 0;
+    while (n < 20) {
+      PImage pic = loadImage(f.getAbsolutePath());
+       image(pic, width/2, height/2, 300, 300);
+       n = n + 1;
+    } 
+  }
+}
+    
