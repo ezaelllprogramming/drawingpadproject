@@ -15,7 +15,7 @@ int tool = 1;
 PImage batman;
 
 void setup() {
-  size(800, 600);
+  size(1440, 850);
   background(grey);
   sliderY = 350;
   batman = loadImage("Batman-PNG-HD.png");
