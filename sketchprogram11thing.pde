@@ -1,3 +1,9 @@
+color red = #FF0000;
+color orange = #FF9E00;
+color yellow = #FFF700;
+color green = #10FF00;
+color blue = #0074FF;
+color purple = #C300FF;
 color white = #FFFFFF;
 color black = #000000;
 color grey = #555555;
@@ -18,8 +24,7 @@ void setup() {
 
 void draw() {
    thickness = map(sliderY,300,400,50,1);
-  
-
+   
   if (mousePressed) {
       if (dist(50, sliderY, mouseX, mouseY) < 25) {
         sliderY = mouseY;
@@ -44,19 +49,58 @@ void draw() {
   stroke(black);
   fill(150);
   rect(0,0,100,600);
+
+  fill(white);
+  rect(20,490,55,25);
+ 
+  fill(penColor);
+  rect(24,10,50,20);
+
+  fill(red);
+  ellipse(50,110,25,25);
+  
+  fill(orange);
+  ellipse(50,140,25,25);
+  
+  fill(yellow);
+  ellipse(50,170,25,25);
+  
+  fill(green);
+  ellipse(50,200,25,25);
+  
+  fill(blue);
+  ellipse(50,230,25,25);
+  
+  fill(purple);
+  ellipse(50,260,25,25);
+    
+  fill(black);
+  ellipse(50,80,25,25);
   
   fill(white);
   ellipse(50,50,25,25);
   
-  fill(black);
-  ellipse(50,80,25,25);
+  rect(20,520,55,25);
+  
+  fill(0, 0, 0);
+  text("LOAD", 30, 537);
+
+  rect(20,545,55,25);
+  
+  fill(255,255,255);
+  text("SAVE AS", 25, 563);
   
   line(50,300,50,400);
   ellipse(50,sliderY,25,25);
   
+  fill(0,0,0);
+  text("CLEAR", 30, 507);
+ 
   image(batman, 50, 450, 50, 50);
   
-}  
+} 
+
+
 
 void mouseReleased() {
   if (dist(50,50, mouseX, mouseY) < 10) {
@@ -66,6 +110,33 @@ void mouseReleased() {
   if (dist(50,80, mouseX, mouseY) < 10) {
     penColor = black;
     tool = 0;
+  }
+  if (dist(50,110, mouseX, mouseY) < 10) {
+  penColor = red;
+  tool = 0;
+  }
+  if (dist(50,140, mouseX, mouseY) < 10) {
+  penColor = orange;
+  tool = 0;
+  }
+  if (dist(50,170, mouseX, mouseY) < 10) {
+  penColor = yellow;
+  tool = 0;
+  }
+  if (dist(50,200, mouseX, mouseY) < 10) {
+  penColor = green;
+  tool = 0;
+  }
+  if (dist(50,230, mouseX, mouseY) < 10) {
+  penColor = blue;
+  tool = 0;
+  }
+  if (dist(50,260, mouseX, mouseY) < 10) {
+  penColor = purple;
+  tool = 0;
+  }
+  if (dist(50,490, mouseX, mouseY) < 30) {
+  clear();
   }
   if (dist(50,450,mouseX,mouseY) < 35) {
     tool = 1;
@@ -98,4 +169,3 @@ void openImage(File f) {
     } 
   }
 }
-    
