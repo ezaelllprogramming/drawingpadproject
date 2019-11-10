@@ -15,8 +15,8 @@ int tool = 1;
 PImage batman;
 
 void setup() {
-  size(1440, 850);
-  background(grey);
+  size(800, 600);
+  background(white);
   sliderY = 350;
   batman = loadImage("Batman-PNG-HD.png");
   imageMode(CENTER);
@@ -137,6 +137,7 @@ void mouseReleased() {
   }
   if (dist(50,490, mouseX, mouseY) < 30) {
   clear();
+  background(white);
   }
   if (dist(50,450,mouseX,mouseY) < 35) {
     tool = 1;
